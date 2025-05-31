@@ -40,12 +40,12 @@ const playGame = (playerChoice:Choice)=>{
     const result = checkWinner(playerChoice,computerChoice);
     resultElement.textContent = `You chose ${playerChoice}, Computer chose ${computerChoice}.${result}`;
     roundsPlayed++;
-    roundElement.textContent = roundsPlayed.toString();
+    roundElement.textContent = `${roundsPlayed.toString()}/${maxRounds}`;
     if(roundsPlayed >=maxRounds){
         const finalmessage = playerScore > computerScore ? "VICTORY! YOU'VE WON THE GAME!" : computerScore>playerScore ? "DEFEAT! YOU'VE LOST THE GAME!" : "It's a tie!";
         resultElement.textContent = `${finalmessage} Game resetting...`;
 
-        setTimeout(resetGame,3000);
+        setTimeout(resetGame,10000);
     }
 
 }
@@ -59,7 +59,7 @@ const resetGame=()=>{
     roundsPlayed=0;
     playerScoreElement.textContent="0";
     compScoreElement.textContent="0";
-    resultElement.textContent="";
+    resultElement.textContent="Choose your move to start playing!";
     roundElement.textContent="0";
 }
 document.getElementById("reset")?.addEventListener("click",resetGame);
